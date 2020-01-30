@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ul>
+        {% for set in sets %}
+            <li>{{ set.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
