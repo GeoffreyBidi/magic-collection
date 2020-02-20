@@ -5,6 +5,7 @@ namespace App\Controller;
 use mtgsdk\Card;
 use mtgsdk\Set;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -49,5 +50,23 @@ class CollectionController extends AbstractController
         return $this->render('collection/sets.html.twig', [
             'sets' => $sets,
         ]);
+    }
+
+    /**
+     * @Route("/test", name="test")
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     */
+    public function testApi()
+    {
+        $version = 'v1';
+        $url = 'https://api.magicthegathering.io/';
+        $client = HttpClient::create();
+        $response = $client->request('GET', $url . $version . '/cards', [
+            'query' => [
+                'page' => 300,
+            ]
+        ]);
+
+        dd($response->toArray());
     }
 }

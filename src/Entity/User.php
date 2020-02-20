@@ -48,6 +48,11 @@ class User implements UserInterface
      */
     private $fullName;
 
+    public function __construct()
+    {
+        $this->fullName = $this->firstName . $this->lastName;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
