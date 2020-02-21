@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}Hello CardsController!{% endblock %}
 
 {% block body %}
@@ -22,4 +23,13 @@
     <p>se connecter -> partie admin gestion compte</p>
     <p>display le last set</p>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        let test = $('#test');
+        console.log(test)
+    </script>
 {% endblock %}
